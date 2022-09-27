@@ -1,8 +1,9 @@
 import type {NextPage} from 'next'
 import GoogleMap2 from "../component/GoogleMap2";
+import MapTab3 from "../component/MapTab3";
 import MapTab2 from "../component/MapTab2";
 import MapTab1 from "../component/MapTab1";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useJsApiLoader} from "@react-google-maps/api";
 import classes from "../styles/mapMain.module.scss";
 
@@ -30,6 +31,7 @@ const Home: NextPage = () => {
           lng:126.8473066
       }
   });
+    const [map, setMap] = useState<any>(null);
 
   const tabChage1 = () => {
       setTab(1);
@@ -49,10 +51,10 @@ const Home: NextPage = () => {
                   <div className={`${classes.tab} ${tab===1 && classes.active}`} onClick={tabChage1}>Basic</div>
                   <div className={`${classes.tab} ${tab===2 && classes.active}`} onClick={tabChage2}>Direction</div>
               </div>
-              {tab===1 && <MapTab1 mapState={mapState}/>}
-              {tab===2 && <MapTab2 directionInfo={directionInfo}/>}
+              {tab===1 && <MapTab1 mapState={mapState} map={map}/>}
+              {tab===2 && <MapTab2 directionInfo={directionInfo} map={map}/>}
           </div>
-        <GoogleMap2 isLoaded={isLoaded} directionsResponse={directionsResponse} tab={tab} setMapState={setMapState} mapState={mapState}/>
+        <GoogleMap2 isLoaded={isLoaded} directionsResponse={directionsResponse} tab={tab} setMapState={setMapState} mapState={mapState} setMap={setMap}/>
       </>
   );
 }

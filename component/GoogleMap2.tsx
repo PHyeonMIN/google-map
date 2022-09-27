@@ -1,14 +1,13 @@
-import {GoogleMap, Marker, useJsApiLoader, Autocomplete, DirectionsRenderer, InfoWindow} from "@react-google-maps/api";
-import {useMemo, useRef, useState} from "react";
-import MapMouseEvent = google.maps.MapMouseEvent;
+import {DirectionsRenderer, GoogleMap, InfoWindow, Marker} from "@react-google-maps/api";
+import {useMemo, useState} from "react";
 import Geocode from "react-geocode";
-import {stat} from "fs";
+import MapMouseEvent = google.maps.MapMouseEvent;
 
 Geocode.setApiKey(`${process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}`)
 
-const GoogleMap2 = (props: { isLoaded: boolean, directionsResponse: any, tab: any, setMapState:any, mapState:any }) => {
+const GoogleMap2 = (props: { isLoaded: boolean, directionsResponse: any, tab: any, setMapState:any, mapState:any,setMap:any }) => {
     const center = useMemo(() => ({lat: 35.1466323, lng: 126.8473066}), [])
-    const [map, setMap] = useState<any>(null);
+
     // const [mapState, setMapState] = useState<any>({
     //     address:"",
     //     city:"",
@@ -110,7 +109,7 @@ const GoogleMap2 = (props: { isLoaded: boolean, directionsResponse: any, tab: an
                         // mapTypeControl : true,
                         // fullscreenControl: true
                     }}
-                    onLoad={(map) => setMap(map)}
+                    onLoad={(map) => props.setMap(map)}
                 >
                     <Marker
                         draggable={true}
