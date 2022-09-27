@@ -36,3 +36,4 @@
 3. google-map 가격책정 : https://mapsplatform.google.com/pricing/?hl=ko
 4. direction 기능 관련 영상 : https://www.youtube.com/watch?v=iP3DnhCUIsE
 5. google-map tutorial 영상 : https://www.youtube.com/watch?v=Alz13kGluL8&t=2607s
+6. react-google-map docs : https://react-google-maps-api-docs.netlify.app/#section-introduction
